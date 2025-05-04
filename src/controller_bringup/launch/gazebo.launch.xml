@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <let name="urdf_path" value="$(find-pkg-share robot_controller)/urdf/my_robot.urdf.xacro"/>
+  <let name="rviz_path" value="$(find-pkg-share robot_controller)/rviz/urdf_config.rviz"/>
+  <let name="gazebo_config_path" value="$(find-pkg-share controller_bringup)/config/gazebo_bridge.yaml"/>
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher">
+    <param name="robot_description" value="$(command 'xacro $(var urdf_path)')"/>
+  </node>
+
+  <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+    <arg name="gz_args" value="$(find-pkg-share controller_bringup)/worlds/world.sdf"/> 
+        <!-- <arg name="gz_args" value="-r empty.sdf"/> -->
+
+  </include>
+
+  <node pkg="ros_gz_sim" exec="create" args="-topic robot_description"/>
+
+  <node pkg="ros_gz_bridge" exec="parameter_bridge">
+    <param name="config_file" value="$(var gazebo_config_path)"/>
+  </node>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" exec="joint_state_publisher"/>
+<node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_path)"/> 
+  <!-- <node pkg="robot_controller" exec="delayed_move" output="screen"/> -->
+
+</launch>

@@ -28,7 +28,7 @@ setup(
     entry_points={
         'console_scripts': [
             'move_robot = robot_controller.start_controller:main',
-            'delayed_move= robot_controller.delayed_move_robot:main',
+            'delayed_move= robot_controller.delayed_move_robot:main'
 
         ],
     },

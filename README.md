@@ -20,6 +20,8 @@ git clone https://github.com/Imotechs/point-to-point-controller.git
 2. cd point-to-point-controller  
 3. colcon build  
 
+## Jump to 6
+
 4. Launch Gazebo and RViz to spawn the robot in the environment
 
 ros2 launch controller_bringup gazebo.launch.xml  

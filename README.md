@@ -13,20 +13,24 @@ This project is implemented using ROS 2 Foxy, RViz2, and Gazebo. It enables poin
 
 ## How to run
 
-### 1. Clone the repository
+### 1. Clone the repository 
 ```bash  
 git clone https://github.com/Imotechs/point-to-point-controller.git 
 
-cd point-to-point-controller  
-colcon build  
+2. cd point-to-point-controller  
+3. colcon build  
 
-3. Launch Gazebo and RViz to spawn the robot in the environment
+4. Launch Gazebo and RViz to spawn the robot in the environment
 
 ros2 launch controller_bringup gazebo.launch.xml  
 
-4. Move the robot
+5. Move the robot
 ros2 run robot_controller move_robot  
 
-5. Watch the robot move...
+6. command:
+docker build -t r2_jazzy .
+docker run -it --rm --env DISPLAY=host.docker.internal:0 --name ros2_container -v "C:\Users\USER\Desktop\ROS_PROJECT\thesis:/ros_ws" r2_jazzy
+
+7. Watch the robot move...
 
 '''

@@ -31,7 +31,7 @@ ros2 run robot_controller move_robot
 
 6. command:
 docker build -t r2_jazzy .
-docker run -it --rm --env DISPLAY=host.docker.internal:0 --name ros2_container -v "C:\Users\USER\Desktop\ROS_PROJECT\thesis:/ros_ws" r2_jazzy
+docker run -it --rm --env DISPLAY=host.docker.internal:0 --name ros2_container r2_jazzy
 
 7. Watch the robot move...
 
